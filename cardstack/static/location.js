@@ -36,6 +36,17 @@ $(function() {
     getRecommendation();
   });
 
+  $(document).on('click', '#start_over_button', function() {
+    $('#info').hide();
+    $('html, body').animate({
+      scrollTop: $("html").offset().top
+    }, 200, function() {
+      $('#info').fadeIn('fast');
+      $('#recommendation').hide();
+      $('#other_options').hide();
+    });
+  });
+
   $(document).on('click', '#other_options_button', function() {
     $('html, body').animate({
       scrollTop: $("#other_options").offset().top
