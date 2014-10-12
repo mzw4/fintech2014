@@ -13,21 +13,36 @@
     <script src="{% static 'jquery.cookie.js' %}" type="application/javascript"></script>
     <script src="{% static 'location.js' %}" type="application/javascript"></script>
 
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:light&v1' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'recommend.css' %}">
   </head>
 
   <body>
-    <div id="location">
+    <h1 class="padded_left70">Card Recommendations</h1>
+    <!-- <div class="border_line"></div> -->
+    <div id="location" class="main_panel">
       <div id="info">
-        <div id="cur_location">Your current location: <span id="addr"></span>
-          <div><span id="lat"></span>, <span id="lng"></span></div>
-        </div>
+        <form id="loc_form" class="form-inline" role="form">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Your Location</label>
+            <input type="text" class="form-control" id="loc_input" placeholder="Location">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
 
+        <div id="current_store_container">You are shopping at: <span id="current_store"></span></div>
         <div id="nearest_merchants_list">
-          <h3>Nearest Merchants</h3>
+          <button id="nearest_toggle" type="button" class="btn btn-primary">Not where you are shopping?</button>
           <ul id="nearest_merchants"></ul>
         </div>
+
+        <div id="user_cards_list">
+          <button id="cards_toggle" type="button" class="btn btn-primary">Your cards</button>
+          <ul id="user_cards"></ul>
+        </div>
+
+        <button id="recommend" type="button" class="btn btn-warning">Recommend a card</button>
       </div>
 
       <div id="map_container">
@@ -35,14 +50,36 @@
       </div>
     </div>
 
-    <div id="recommendation">
-      <table class="table">
-        <tr>
-          <th>Card</th>
-          <th>Store</th>
-          <th>Reward</th>
-        </tr>
-        
+    <div id="recommendation" class="main_panel">
+      <div id="recommend_text">
+        <div>
+          We recommend
+        </div>
+        <div class="padded_top30">
+          <span id="recommended_card"></span>
+        </div>
+        <div class="padded_top30">
+          Your rewards:
+        </div>
+        <div class="padded_top10">
+          <span id="rewards"></span>
+        </div>
+      </div>
+
+      <div id="other_options_container">
+        <button id="other_options_button" type="button" class="btn btn-warning">See your other options</button>
+      </div>
+    </div>
+
+    <div id="other_options" class="main_panel">
+      <h3>Your Cards</h3>
+      <table class="table table-hover" id="card_table">
+        <thead class="head_row">
+          <tr>
+            <th>Card</th>
+            <th>Reward</th>
+          </tr>
+        </thead>
       </table>
     </div>
 

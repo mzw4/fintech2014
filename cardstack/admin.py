@@ -3,11 +3,26 @@ import httplib
 import urllib,urllib2, urlparse, base64
 from oauthlib import oauth1
 import xml.etree.ElementTree as ET
+import time
+from datetime import date
+
+from Purchase import Purchase
+
+GEOLOC_API_KEY = 'AIzaSyBR_ITmkxEZzk0za75DWVFoTva_IryImi0'
 
 def FindAddr(lat, lng):
   params = dict(
-    key='AIzaSyBR_ITmkxEZzk0za75DWVFoTva_IryImi0',
+    key=GEOLOC_API_KEY,
     latlng=str(lat) + ',' + str(lng)
+  )
+  headers = {'content-type': 'application/json'}
+  r = requests.get('https://maps.googleapis.com/maps/api/geocode/json', params=params)
+  return r.text
+
+def GetLocation(input):
+  params = dict(
+    key=GEOLOC_API_KEY,
+    address=input
   )
   headers = {'content-type': 'application/json'}
   r = requests.get('https://maps.googleapis.com/maps/api/geocode/json', params=params)
@@ -31,7 +46,7 @@ def LocateMerchants(Lat, Lon, pageOffset, pageLength):
         'Latitude': Lat,
         'Longitude': Lon,
         'DistanceUnit': 'mile',
-        'Radius':2,
+        'Radius':10000,
         # 'CountrySubdivision':'NY',
         # 'AddressLine1':'42 Elm Avenue',
         # 'AddressLine2':'Suite 101',
@@ -85,13 +100,11 @@ def LocateMerchants(Lat, Lon, pageOffset, pageLength):
 
     if not response:
       return
-    # print response
     merchants = ET.fromstring(response)
     merchant_list = merchants.findall('Merchant')
-    # print response
 
     if not merchant_list:
-      return
+      return []
 
     results = []
     for merchant in merchant_list:
@@ -104,10 +117,13 @@ def LocateMerchants(Lat, Lon, pageOffset, pageLength):
           'distance': merchant.find('Location').find('Distance').text,
           })
 
-      # features = merchant.find('Features')
-      # if features:
-      #   print features.text
-      # # print merchant.find('Features').find('Cashback').find('MaximumAmount').text
-
     return results
+
+def get_recommendation(store, category, user):
+  today = date.today()
+  (recommendation, reward) = user.optimalCard(Purchase(category, store, today.year, today.month, today.day))
+  reward = user.getUtilityType(reward)
+  return (recommendation.type, recommendation.description)
+
+
 

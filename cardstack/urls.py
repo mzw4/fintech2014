@@ -15,6 +15,8 @@ urlpatterns = patterns('',
     url(r'^$', views.main, name='main'),
     url(r'^spending/', views.spending, name='spending'),
     url(r'^get_data/', views.ajax_get_data),
+    url(r'^get_location/', views.ajax_get_location),
+    url(r'^get_recommendation/', views.ajax_get_recommendation),
 
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -1,19 +1,19 @@
 [ {
-	"cardName" : "Chase Freedom",
+	"name" : "Chase Freedom",
 	"id" : "1",
 	"rewardType" : "Cash Back",
 	"utility" : "10",
 	"utilityType" : "Cash Back"
 },
 {
-	"cardName" : "Chase Sapphire Preferred Card",
+	"name" : "Chase Sapphire Preferred Card",
 	"id" : "2",
 	"rewardType" : "Points",
 	"utility" : "20",
 	"utilityType" : "Hotel and Car Rentals"
 },
 {
-	"cardName" : "Discover More Card with Cash Back Bonus",
+	"name" : "Discover More Card with Cash Back Bonus",
 	"id" : "3",
 	"rewardType" : "Cash Back",
 	"utility" : "11",
