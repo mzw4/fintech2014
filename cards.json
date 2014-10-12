@@ -1,0 +1,98 @@
+[ {
+	"cardName" : "Chase Freedom",
+	"id" : "1",
+	"rewardType" : "Cash Back",
+	"utility" : "10",
+	"utilityType" : "Cash Back"
+},
+{
+	"cardName" : "Chase Sapphire Preferred Card",
+	"id" : "2",
+	"rewardType" : "Points",
+	"utility" : "20",
+	"utilityType" : "Hotel and Car Rentals"
+},
+{
+	"cardName" : "Discover More Card with Cash Back Bonus",
+	"id" : "3",
+	"rewardType" : "Cash Back",
+	"utility" : "11",
+	"utilityType" : "Cash Back"
+},
+{
+	"name" : "BankAmericard Cash Rewards Credit Card",
+	"id" : "4",
+	"rewardType" : "Cash Back",
+	"utility" : "12",
+	"utilityType" : "Cash Back"
+},
+{
+	"name" : "Amazon.com Rewards Visa Card",
+	"id" : "5",
+	"rewardType" : "Points",
+	"utility" : "7",
+	"utilityType" : "Gifts"
+},
+{
+	"name" : "Discover It",
+	"id" : "6",
+	"rewardType" : "Cash Back",
+	"utility" : "13",
+	"utilityType" : "Cash Back"
+},
+{
+	"name" : "TrueEarnings Card from Costco and American Express",
+	"id" : "7",
+	"rewardType" : "Cash Back",
+	"utility" : "14",
+	"utilityType" : "Cash Back"
+},
+{
+	"name" : "Blue Cash Everyday Card from American Express",
+	"id" : "8",
+	"rewardType" : "Cash Back",
+	"utility" : "15",
+	"utilityType" : "Cash Back"
+},
+{
+	"name" : "Starwood Preferred Guest Credit Card from American Express",
+	"id" : "16",
+	"rewardType" : "Star Points",
+	"utility" : "6",
+	"utilityType" : "Hotel and Car Rentals"
+},
+{
+	"name" : "The Platinum Card from American Express",
+	"id" : "10",
+	"rewardType" : "Points",
+	"utility" : "5",
+	"utilityType" : "Gifts"
+},
+{
+	"name" : "Chase Freedom",
+	"id" : "11",
+	"rewardType" : "Cash Back",
+	"utility" : "16",
+	"utilityType" : "Cash Back"
+},
+{
+	"name" : "Blue Cash Preferred Card from American Express",
+	"id" : "12",
+	"rewardType" : "Cash Back",
+	"utility" : "17",
+	"utilityType" : "Cash Back"
+},
+{
+	"name" : "United MileagePlus Explorer Card",
+	"id" : "13",
+	"rewardType" : "Miles",
+	"utility" : "4",
+	"utilityType" : "Airline Mileage"
+},
+{
+	"name" : "Barclaycard Arrival Plus World Elite MasterCard",
+	"id" : "14",
+	"rewardType" : "Miles",
+	"utility" : "3",
+	"utilityType" : "Airline Mileage"
+} ]

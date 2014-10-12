@@ -1,1 +1,50 @@
-<html>Spending page. it is {{ time }}</html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Testtt</title>
+    {% load static %}
+
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="{% static 'boostrap.min.js' %}" type="application/javascript"></script>
+    <script src="{% static 'jquery-2.1.1.min.js' %}" type="application/javascript" ></script>
+    <script src="{% static 'jquery.cookie.js' %}" type="application/javascript"></script>
+    <script src="{% static 'location.js' %}" type="application/javascript"></script>
+
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'recommend.css' %}">
+  </head>
+
+  <body>
+    <div id="location">
+      <div id="info">
+        <div id="cur_location">Your current location: <span id="addr"></span>
+          <div><span id="lat"></span>, <span id="lng"></span></div>
+        </div>
+
+        <div id="nearest_merchants_list">
+          <h3>Nearest Merchants</h3>
+          <ul id="nearest_merchants"></ul>
+        </div>
+      </div>
+
+      <div id="map_container">
+        <div id="map-canvas"></div>
+      </div>
+    </div>
+
+    <div id="recommendation">
+      <table class="table">
+        <tr>
+          <th>Card</th>
+          <th>Store</th>
+          <th>Reward</th>
+        </tr>
+        
+      </table>
+    </div>
+
+  </body>
+</html>

@@ -4,19 +4,16 @@ import urllib,urllib2, urlparse, base64
 from oauthlib import oauth1
 import xml.etree.ElementTree as ET
 
-def get_addr(latlng):
+def FindAddr(lat, lng):
   params = dict(
     key='AIzaSyBR_ITmkxEZzk0za75DWVFoTva_IryImi0',
-    latlng=latlng
+    latlng=str(lat) + ',' + str(lng)
   )
   headers = {'content-type': 'application/json'}
-
   r = requests.get('https://maps.googleapis.com/maps/api/geocode/json', params=params)
-  print r.text
+  return r.text
 
 # get_addr("40.714224,-73.961452")
-
-
 
 def LocateMerchants(Lat, Lon, pageOffset, pageLength):
     response = ''
@@ -34,7 +31,7 @@ def LocateMerchants(Lat, Lon, pageOffset, pageLength):
         'Latitude': Lat,
         'Longitude': Lon,
         'DistanceUnit': 'mile',
-        'Radius':1,
+        'Radius':2,
         # 'CountrySubdivision':'NY',
         # 'AddressLine1':'42 Elm Avenue',
         # 'AddressLine2':'Suite 101',
@@ -60,7 +57,7 @@ def LocateMerchants(Lat, Lon, pageOffset, pageLength):
     
     # SIGN THE REQUEST
     uri, headers, body = client.sign(u)
-    
+
     # PARSE THE AUTHORIZATION HEADER FOR USE BELOW
     for k,v in headers.iteritems():
         h = "%s" % (v)
@@ -86,17 +83,31 @@ def LocateMerchants(Lat, Lon, pageOffset, pageLength):
         import traceback
         print ('generic exception: ' + traceback.format_exc())
 
+    if not response:
+      return
+    # print response
     merchants = ET.fromstring(response)
-    print response
+    merchant_list = merchants.findall('Merchant')
+    # print response
 
-    for merchant in merchants.findall('Merchant'):
-      print merchant.find('Name').text + ' ' + merchant.find('Category').text
-      features = merchant.find('Features')
-      if features:
-        print features.text
-      # print merchant.find('Features').find('Cashback').find('MaximumAmount').text
+    if not merchant_list:
+      return
 
-LocateMerchants(41.588006, -87.440855, 1, 10)
+    results = []
+    for merchant in merchant_list:
+      if merchant.find('Name').text and merchant.find('Category').text:
+        print merchant.find('Name').text + ' ' + merchant.find('Category').text
 
+        results.append({
+          'name': merchant.find('Name').text,
+          'category': merchant.find('Category').text,
+          'distance': merchant.find('Location').find('Distance').text,
+          })
 
+      # features = merchant.find('Features')
+      # if features:
+      #   print features.text
+      # # print merchant.find('Features').find('Cashback').find('MaximumAmount').text
+
+    return results
 
